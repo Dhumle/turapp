@@ -1,0 +1,18 @@
+{
+  "name": "Nordic Packraft Planner",
+  "short_name": "Packraft Pro",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#0b1220",
+  "description": "Offline-first expedition planning PWA for Nordic packrafting.",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
