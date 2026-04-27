@@ -1,0 +1,17 @@
+:root{--bg:#07111f;--card:#0f1b2f;--text:#e5edf7;--muted:#94a3b8;--line:#23354f;--accent:#38bdf8;--danger:#ef4444;--warn:#f59e0b;--ok:#22c55e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--text)}
+.app-header{position:sticky;top:0;background:rgba(7,17,31,.95);backdrop-filter:blur(6px);padding:1rem;z-index:30;border-bottom:1px solid var(--line)}
+.eyebrow{margin:0;color:var(--muted);text-transform:uppercase;font-size:.7rem;letter-spacing:.09em}h1{margin:.2rem 0 0.7rem;font-size:1.2rem}
+main{padding:1rem;display:grid;gap:1rem;padding-bottom:7rem}.tabs{display:flex;gap:.5rem;flex-wrap:wrap}
+.tab,button,.file-input{border:1px solid var(--line);background:var(--card);color:var(--text);padding:.55rem .8rem;border-radius:999px;cursor:pointer;font-weight:600}
+.tab.is-active,.primary{background:var(--accent);color:#052033;border-color:transparent}.ghost{background:transparent}
+.panel{display:none;gap:1rem}.panel.is-visible{display:grid}#map{height:48vh;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem}.toolbar,.inline-form{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+input,select{padding:.55rem .65rem;background:#0b1424;border:1px solid var(--line);border-radius:10px;color:var(--text)}
+.file-input input{display:none}.list{display:grid;gap:.45rem}.list-item{padding:.55rem;border:1px solid var(--line);border-radius:10px}
+.muted{color:var(--muted)}.chip{font-size:.75rem;padding:.1rem .45rem;border-radius:999px;background:#16253b;color:#9bd8f5}
+.summary-panel{position:fixed;right:1rem;bottom:1rem;z-index:35;display:grid;justify-items:end}
+.summary-content{display:none;max-width:320px;background:var(--card);border:1px solid var(--line);padding:.75rem;border-radius:12px;margin-top:.5rem}
+.summary-panel.open .summary-content{display:block}.alerts p{padding:.45rem;border-radius:8px}
+.alert-high{background:rgba(239,68,68,.15);border:1px solid var(--danger)}.alert-med{background:rgba(245,158,11,.15);border:1px solid var(--warn)}.alert-low{background:rgba(34,197,94,.15);border:1px solid var(--ok)}
+@media(min-width:900px){main{grid-template-columns:1fr 1fr}.panel.is-visible{grid-column:1/-1}}
