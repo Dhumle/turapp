@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Nordic Packraft Planner</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Expedition Mode</p>
+      <h1>Nordic Packraft Planner</h1>
+    </div>
+    <nav class="tabs top-tabs">
+      <button class="tab is-active" data-tab="route">Route</button>
+      <button class="tab" data-tab="gear">Gear</button>
+      <button class="tab" data-tab="weather">Weather</button>
+      <button class="tab" data-tab="notes">Notes</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="route" class="panel is-visible">
+      <div class="toolbar">
+        <button id="draw-route" class="primary">Draw route</button>
+        <button id="edit-route" class="ghost">Edit points</button>
+        <label class="file-input ghost">Import GPX <input type="file" id="gpx-import" accept=".gpx" /></label>
+        <button id="gpx-export" class="ghost">Export GPX</button>
+      </div>
+      <div id="map"></div>
+      <div class="card">
+        <h3>Route segmentation</h3>
+        <button id="auto-segment" class="ghost">Auto-suggest segments</button>
+        <div id="segment-list" class="list"></div>
+      </div>
+      <div class="card">
+        <h3>Elevation profile</h3>
+        <canvas id="elevation-canvas" width="900" height="240"></canvas>
+        <p id="elevation-meta" class="muted"></p>
+      </div>
+    </section>
+
+    <section id="gear" class="panel">
+      <div class="card">
+        <h3>Gear items</h3>
+        <form id="gear-form" class="inline-form">
+          <input name="name" placeholder="Dry suit" required />
+          <input name="weight" type="number" step="0.1" placeholder="kg" required />
+          <select name="mode">
+            <option value="both">Both</option>
+            <option value="backpack">Backpack only</option>
+            <option value="raft">Raft only</option>
+          </select>
+          <label><input type="checkbox" name="critical" /> Critical</label>
+          <button class="primary" type="submit">Add</button>
+        </form>
+        <div id="gear-list"></div>
+      </div>
+      <div class="card" id="load-output"></div>
+    </section>
+
+    <section id="weather" class="panel">
+      <div class="card">
+        <h3>Weather forecast (Yr)</h3>
+        <div class="inline-form">
+          <input id="weather-lat" type="number" step="0.0001" placeholder="Latitude" />
+          <input id="weather-lon" type="number" step="0.0001" placeholder="Longitude" />
+          <button id="fetch-weather" class="primary">Fetch</button>
+        </div>
+        <label>Timeline (<span id="weather-hour-label">0</span>h)
+          <input id="weather-slider" type="range" min="0" max="23" value="0" />
+        </label>
+        <div id="weather-now" class="list"></div>
+        <div id="weather-insights" class="alerts"></div>
+      </div>
+    </section>
+
+    <section id="notes" class="panel">
+      <div class="card">
+        <h3>Structured notes</h3>
+        <form id="note-form" class="inline-form">
+          <select name="tag">
+            <option value="hazard">hazard</option>
+            <option value="campsite">campsite</option>
+            <option value="exit point">exit point</option>
+            <option value="logistics">logistics</option>
+          </select>
+          <input name="text" placeholder="Bridge is broken - use north bank" required />
+          <label><input name="pin" type="checkbox" /> Pin at map center</label>
+          <button class="primary" type="submit">Add note</button>
+        </form>
+        <div id="notes-list" class="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="summary-panel" class="summary-panel">
+    <button id="summary-toggle" class="primary">Trip Summary</button>
+    <div class="summary-content" id="summary-content"></div>
+  </aside>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
